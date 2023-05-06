@@ -1,0 +1,60 @@
+﻿@model IEnumerable<project_kshetham.Models.NakshathramVM>
+
+@{
+    ViewData["Title"] = "ListNakshathram";
+}
+
+<h1 style="margin-left:380px">നക്ഷത്ര നാമാവലി</h1>
+<head>
+    
+</head>
+
+
+<p>
+    <a asp-action="Create"></a>
+</p>
+
+    <table class="table-sm" style="color:black; font-size:large; width:600px; margin-left:300px;">
+        <thead>
+            <tr>
+                <th>
+                    കോഡ്
+                </th>
+                <th>
+                    നക്ഷതം
+                </th>
+                <th>
+                    എഡിറ്റ്
+                </th>
+                <th>
+                    ഡിലീറ്റ്
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nakshathram_code)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nakshathram_name)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+
+                        <a class="btn btn-danger" asp-controller="Nakshathram" asp-action="editnakshathram" asp-route-nakshathramcode="@item.nakshathram_code">Edit</a>
+                        </td>
+                    <td>
+                        <a class="btn btn-danger" asp-controller="Nakshathram" asp-action="editnakshathram" asp-route-nakshathramcode="@item.nakshathram_code">Delete</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>

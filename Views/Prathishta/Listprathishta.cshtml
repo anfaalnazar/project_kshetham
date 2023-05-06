@@ -1,0 +1,53 @@
+﻿@model IEnumerable<project_kshetham.Models.PrathishtaVM>
+
+@{
+    ViewData["Title"] = "Listprathishta";
+}
+
+<h1 style="margin-left:380px">പ്രതിഷ്ഠ നാമാവലി</h1>
+
+<p>
+    <a asp-action="Create"></a>
+</p>
+<table class="tablesm" style="color:black; font-size:large; width:600px; margin-left:300px;">
+    <thead>
+        <tr>
+            <th>
+                കോഡ്
+            </th>
+            <th>
+                പ്രതിഷ്ഠ
+            </th>
+            <th>
+                എഡിറ്റ്
+            </th>
+            <th>
+                ഡിലീറ്റ്
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.prathishta_code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prathishta_name)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                <a class="btn btn-danger" asp-controller="Prathishta" asp-action="editprathishta" asp-route-prathishtacode="@item.prathishta_code">Edit</a>
+
+            </td>
+            <td>
+                <a class="btn btn-danger" asp-controller="Prathishta" asp-action="editprathishta" asp-route-prathishtacode="@item.prathishta_code">delete</a>
+
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>

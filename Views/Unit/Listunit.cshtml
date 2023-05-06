@@ -1,0 +1,43 @@
+﻿@model IEnumerable<project_kshetham.Models.unitVM>
+
+@{
+    ViewData["Title"] = "Listunit";
+}
+
+<h1>Listunit</h1>
+
+<p>
+    <a asp-action="Create"></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.unitcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.unitname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.unitcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.unitname)
+            </td>
+            <td>
+                <a class="btn btn-danger" asp-controller="Unit" asp-action="editunit" asp-route-unitcode="@item.unitcode">Edit</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" asp-controller="editunit" asp-action="editunit" asp-route-unitcode="@item.unitcode">delete</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<project_kshetham.Models.CounterVM>
+
+@{
+    ViewData["Title"] = "ListCounters";
+}
+
+<h1>ListCounters</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.counter_code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.counters)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.counter_code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.counters)
+            </td>
+            <td>
+                <a asp-controller="Counter" asp-action="editcounter" asp-route-counter_code="@item.counter_code">Edit</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
